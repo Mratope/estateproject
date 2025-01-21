@@ -1,29 +1,29 @@
-"use client";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import Link from "next/link";
-import "@/public/font/fontawesome-free-6.7.2-web/css/all.css";
-import { useEffect, useState } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+"use client"
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs"
+import Link from "next/link"
+import "@/public/font/fontawesome-free-6.7.2-web/css/all.css"
+import { useEffect, useState } from "react"
+import { useSearchParams, useRouter } from "next/navigation"
 export default function Header() {
-  const searchParams = useSearchParams();
-  const router = useRouter();
-  const [searchTerm, setSearchTerm] = useState("");
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(searchParams);
-    const searchTermFromUrl = urlParams.get("searchTerm");
+    const urlParams = new URLSearchParams(searchParams)
+    const searchTermFromUrl = urlParams.get("searchTerm")
     if (searchTermFromUrl) {
-      setSearchTerm(searchTermFromUrl);
+      setSearchTerm(searchTermFromUrl)
     }
-  }, [searchParams]);
+  }, [searchParams])
 
   const handleSubmit = (e: any) => {
-    e.preventDefault();
-    const urlParams = new URLSearchParams(searchParams);
-    urlParams.set("searchTerm", searchTerm);
-    const searchQuery = urlParams.toString();
-    router.push(`/search?${searchQuery}`);
-  };
+    e.preventDefault()
+    const urlParams = new URLSearchParams(searchParams)
+    urlParams.set("searchTerm", searchTerm)
+    const searchQuery = urlParams.toString()
+    router.push(`/search?${searchQuery}`)
+  }
 
   return (
     <header className="bg-slate-200 shadow-md">
@@ -71,5 +71,5 @@ export default function Header() {
         </ul>
       </div>
     </header>
-  );
+  )
 }
