@@ -13,7 +13,7 @@ export const connect = async () => {
 
     try {
         await mongoose.connect(process.env.MONGODB_URI!, {
-            dbName: 'Next Estate'
+            dbName: 'Next-Estate'
         });
         initialized = true; // Set initialized to true after successful connection
         console.log('Successfully connected to MongoDB');
